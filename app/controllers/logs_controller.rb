@@ -3,8 +3,9 @@ class LogsController < ApplicationController
 
   # GET /people
   def index
-    @logs = Log.all
+    user = logged_in_user
+    logs = user.log
 
-    render json: @logs
+    render json: logs
   end
 end

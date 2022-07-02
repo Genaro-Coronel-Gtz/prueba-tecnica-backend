@@ -4,9 +4,11 @@ class PeopleController < ApplicationController
 
   # GET /people
   def index
-    @people = Person.all
+    user = logged_in_user
 
-    render json: @people
+    people = user.person
+
+    render json: people
   end
 
   # GET /people/1
@@ -71,7 +73,7 @@ class PeopleController < ApplicationController
         action = 'Crear'
       when 'PUT'
         action = 'Actualizar'
-      when 'DELTE'
+      when 'DELETE'
         action = 'Eliminar'
       else
         action = 'No especificada'
